@@ -6,8 +6,8 @@
 
 using namespace std;
 
-BZL::Mutex mutex;
-BZL::Semaphore semaphore(1);
+Wz::Mutex mutex;
+Wz::Semaphore semaphore(1);
 
 unsigned int tmp = 0;
 
@@ -23,13 +23,13 @@ void thread1()
 
         tmp += i;
         printf("threa1: %d\n", tmp);
-        BZL::Thread::sleepMs(200);
+        Wz::Thread::sleepMs(200);
     }
 
     // mutex.unlock();
 }
 
-class Thread2 : public BZL::Thread
+class Thread2 : public Wz::Thread
 {
 public:
     void run()
@@ -42,7 +42,7 @@ public:
 
             tmp -= i;
             printf("threa2: %d\n", tmp);
-            BZL::Thread::sleepMs(300);
+            Wz::Thread::sleepMs(300);
         }
 
         // mutex.unlock();
@@ -53,7 +53,7 @@ int main(int argc, char **argv)
 {
     printf("------Thread------\n");
 
-    BZL::Thread t1(&thread1);
+    Wz::Thread t1(&thread1);
     t1.start();
 
     Thread2 t2;

@@ -9,7 +9,7 @@
 #include <pthread.h>
 #endif
 
-namespace BZL
+namespace Wz
 {
 
 struct MutexHandle

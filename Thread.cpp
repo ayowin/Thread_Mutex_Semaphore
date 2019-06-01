@@ -12,7 +12,7 @@
 #include <time.h>
 #endif
 
-namespace BZL
+namespace Wz
 {
 
 #ifdef _WIN32
@@ -60,6 +60,11 @@ Thread::~Thread()
         delete threadHandle;
         threadHandle = NULL;
     }
+}
+
+void Thread::setRunnable(Runnable runnable)
+{
+    this->runnable = runnable;
 }
 
 void Thread::run()

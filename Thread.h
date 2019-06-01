@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-namespace BZL
+namespace Wz
 {
 
 typedef void (*Runnable)();
@@ -17,6 +17,8 @@ public:
     Thread();
     Thread(Runnable runnable);
     virtual ~Thread();
+
+    void setRunnable(Runnable runnable);
 
     virtual void run();
 

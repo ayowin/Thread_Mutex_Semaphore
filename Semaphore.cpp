@@ -13,7 +13,7 @@
 #include <sys/time.h>
 #endif
 
-namespace BZL
+namespace Wz
 {
 
 struct SemaphoreHandle
