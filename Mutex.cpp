@@ -96,4 +96,4 @@ void Mutex::unlock()
 #endif
 }
 
-} // namespace BZL
+} // namespace Wz

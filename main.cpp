@@ -14,9 +14,10 @@ unsigned int tmp = 0;
 void thread1()
 {
     // mutex.lock();
+    
     for (int i = 0; i < 100; i++)
     {
-        if(0 == i%10)
+        if (0 == i % 10)
         {
             semaphore.release();
         }

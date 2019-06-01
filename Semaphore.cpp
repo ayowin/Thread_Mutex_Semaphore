@@ -67,31 +67,31 @@ Semaphore::~Semaphore()
 
 void Semaphore::wait()
 {
-    if(NULL == semaphoreHandle)
+    if (NULL == semaphoreHandle)
     {
         return;
     }
 
 #ifdef _WIN32
     // windows
-    WaitForSingleObject(semaphoreHandle->pSemaphore,INFINITE);	
+    WaitForSingleObject(semaphoreHandle->pSemaphore, INFINITE);
 #else
     // linux
     sem_wait(&(semaphoreHandle->pSemaphore));
-#endif  
+#endif
 }
 
 bool Semaphore::wait(const unsigned int &ms)
 {
-    if(NULL == semaphoreHandle)
+    if (NULL == semaphoreHandle)
     {
         return false;
     }
 
 #ifdef _WIN32
     // windows
-    DWORD result = WaitForSingleObject(semaphoreHandle->pSemaphore,ms);
-	if (result == WAIT_OBJECT_0)
+    DWORD result = WaitForSingleObject(semaphoreHandle->pSemaphore, ms);
+    if (result == WAIT_OBJECT_0)
 #else
     // linux
     timeval tv_now;
@@ -101,17 +101,17 @@ bool Semaphore::wait(const unsigned int &ms)
     ts.tv_sec = tv_now.tv_sec;
     ts.tv_nsec = tv_now.tv_usec * 1000;
 
-    int ns = ts.tv_nsec + (ms % 1000)  * 1000000;
+    int ns = ts.tv_nsec + (ms % 1000) * 1000000;
     ts.tv_nsec = ns % 1000000000;
     ts.tv_sec += ns / 1000000000;
     ts.tv_sec += ms / 1000;
 
-    if(sem_timedwait(&(semaphoreHandle->pSemaphore), &ts) != 0)
+    if (sem_timedwait(&(semaphoreHandle->pSemaphore), &ts) != 0)
 #endif
     {
         return true;
     }
-	else
+    else
     {
         return false;
     }
@@ -119,18 +119,18 @@ bool Semaphore::wait(const unsigned int &ms)
 
 void Semaphore::release()
 {
-    if(NULL == semaphoreHandle)
+    if (NULL == semaphoreHandle)
     {
         return;
     }
 
 #ifdef _WIN32
     // windows
-    ReleaseSemaphore(semaphoreHandle->pSemaphore,1,NULL);
+    ReleaseSemaphore(semaphoreHandle->pSemaphore, 1, NULL);
 #else
     // linux
     sem_post(&(semaphoreHandle->pSemaphore));
 #endif
 }
 
-} // namespace BZL
+} // namespace Wz

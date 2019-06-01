@@ -19,9 +19,9 @@ public:
     void unlock();
 
 private:
-    MutexHandle* mutexHandle;
+    MutexHandle *mutexHandle;
 };
 
-}
+} // namespace Wz
 
 #endif

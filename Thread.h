@@ -25,14 +25,14 @@ public:
     void start();
     void join();
 
-    static void sleepS(const unsigned int& s);
-    static void sleepMs(const unsigned int& ms);
+    static void sleepS(const unsigned int &s);
+    static void sleepMs(const unsigned int &ms);
 
 private:
     Runnable runnable;
-    ThreadHandle* threadHandle;
+    ThreadHandle *threadHandle;
 };
 
-}
+} // namespace Wz
 
 #endif

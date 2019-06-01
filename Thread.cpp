@@ -87,7 +87,7 @@ void Thread::start()
                                                    this,
                                                    0,
                                                    &threadId);
-    if(0 == threadHandle->pThread)
+    if (0 == threadHandle->pThread)
 #else
     // linux
     if (0 != pthread_create(&(threadHandle->pThread),
@@ -110,8 +110,8 @@ void Thread::join()
     {
 #ifdef _WIN32
         // windows
-        WaitForSingleObject(threadHandle->pThread,INFINITE);
-		CloseHandle(threadHandle->pThread);
+        WaitForSingleObject(threadHandle->pThread, INFINITE);
+        CloseHandle(threadHandle->pThread);
 #else
         // linux
         pthread_join(threadHandle->pThread, NULL);
@@ -125,7 +125,7 @@ void Thread::sleepS(const unsigned int &s)
 {
 #ifdef _WIN32
     // windows
-    Sleep(s*1000);
+    Sleep(s * 1000);
 #else
     // linux
     sleep(s);
@@ -143,4 +143,4 @@ void Thread::sleepMs(const unsigned int &ms)
 #endif
 }
 
-} // namespace BZL
+} // namespace Wz
